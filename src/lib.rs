@@ -55,6 +55,10 @@ impl fmt::Display for DateTime {
     }
 }
 
+pub fn getpid() -> i32 {
+    unsafe { libc::getpid() }
+}
+
 #[macro_export]
 macro_rules! tlog {
     ($fmt:expr) => (
@@ -76,7 +80,7 @@ macro_rules! tlog {
                 return;
             }
         }
-        let pid = unsafe { libc::getpid() };
+        let pid = tlog::getpid();
         let now = tlog::DateTime::now();
         let msg = format!("[{}][{}] {}", now, pid, msg);
         let msg = if msg.ends_with('\n') { msg } else { format!("{}\n", msg) };
