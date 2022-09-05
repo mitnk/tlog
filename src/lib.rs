@@ -1,6 +1,6 @@
 /*!
-A debug tool which writes logs into file. Timestamp & pid will be added to
-the logs.
+A dumb debug tool which writes logs into file. Timestamp & pid will be
+added to the logs.
 
 # Usage
 
@@ -10,7 +10,7 @@ use tlog::tlog;
 tlog!("{} = {}", "5 x 7", 5 * 7);
 ```
 
-Logs will be written to file `/tmp/t.log` unless changed via env `TMP_LOG_FILE`.
+Logs will be written to file `/tmp/t.log` unless changed with env `TMP_LOG_FILE`.
 
 ```
 $ cat /tmp/t.log
@@ -76,7 +76,7 @@ macro_rules! tlog {
         match std::fs::OpenOptions::new().append(true).create(true).open(&log_file) {
             Ok(x) => cfile = x,
             Err(e) => {
-                println!("_tlog: open error: {}: {}", &log_file, e);
+                println!("tlog: open error: {}: {}", &log_file, e);
                 return;
             }
         }
@@ -87,7 +87,7 @@ macro_rules! tlog {
         match cfile.write_all(msg.as_bytes()) {
             Ok(_) => {}
             Err(e) => {
-                println!("_tlog: write_all failed: {}", e);
+                println!("tlog: write_all failed: {}", e);
                 return;
             }
         }

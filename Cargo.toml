@@ -2,7 +2,7 @@
 name = "tlog"
 description = "A debug tool (library) which writes logs into file."
 documentation = "https://docs.rs/tlog/"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 authors = ["Hugo Wang <w@mitnk.com>"]
 repository = "https://github.com/mitnk/tlog"
