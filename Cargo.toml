@@ -1,0 +1,14 @@
+[package]
+name = "tlog"
+version = "0.1.0"
+edition = "2021"
+authors = ["Hugo Wang <w@mitnk.com>"]
+repository = "https://github.com/mitnk/tlog"
+license = "MIT"
+
+[dependencies]
+libc = "0.2.0"
+
+[dependencies.time]
+version = "0.3.0"
+features = ["local-offset"]
