@@ -1,6 +1,7 @@
 [package]
 name = "tlog"
 description = "A debug tool (library) which writes logs into file."
+documentation = "https://docs.rs/tlog/"
 version = "0.1.1"
 edition = "2021"
 authors = ["Hugo Wang <w@mitnk.com>"]
