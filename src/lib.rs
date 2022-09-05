@@ -75,10 +75,7 @@ macro_rules! tlog {
         let mut cfile;
         match std::fs::OpenOptions::new().append(true).create(true).open(&log_file) {
             Ok(x) => cfile = x,
-            Err(e) => {
-                println!("tlog: open error: {}: {}", &log_file, e);
-                return;
-            }
+            Err(_) => panic!("tlog: open file error"),
         }
         let pid = tlog::getpid();
         let now = tlog::DateTime::now();
@@ -86,10 +83,7 @@ macro_rules! tlog {
         let msg = if msg.ends_with('\n') { msg } else { format!("{}\n", msg) };
         match cfile.write_all(msg.as_bytes()) {
             Ok(_) => {}
-            Err(e) => {
-                println!("tlog: write_all failed: {}", e);
-                return;
-            }
+            Err(_) => panic!("tlog: write_all error")
         }
     );
 
